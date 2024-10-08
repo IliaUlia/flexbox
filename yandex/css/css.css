@@ -441,6 +441,11 @@ text-transform: uppercase;
     font-weight: 400;
     line-height: 24px;
     color: #3057A2;
+    max-width: 300px;
+}
+
+.stages__swiper {
+    flex-direction: column;
 }
 
 .stages__lists {
@@ -486,16 +491,16 @@ text-transform: uppercase;
     background-position: center;
 }
 
-.stages__item-text {
-font-family: 'Golos Text', sans-serif;
-font-size: 20px;
-font-weight: 500;
-line-height: 24px;
-text-align: left;
+.stages__block {
+    display: none;
 }
 
-.stages-text {
-    max-width: 520px;
+.stages__item-text {
+    font-family: 'Golos Text', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
 }
 
 .stages__img {

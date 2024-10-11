@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href=".editorconfig">
 </head>
+<script defer src="js/slider.js"></script>
 
 <body>
     <header class="header">
@@ -36,10 +37,10 @@
             </p>
             <div class="header__list flex list-reset">
                     <a href="#" class="header__link-black link-style">
-                        Поддержать <br> шахматную мысль
+                        Поддержать шахматную мысль
                     </a>
                     <a href="#" class="header__link-white link-style">
-                        Подробнее <br> о&nbsp;турнире
+                        Подробнее о&nbsp;турнире
                     </a>
             </div>
             </div>
@@ -79,7 +80,7 @@
             <div class="description__container flex">
                 <div class="description__top flex">
                     <h3 class="description__title-top h3-title">
-                        Чтобы поддержать<br> Международный васюкинский турнир посетите лекцию на&nbsp;тему: <span class="h3-title-span"> &laquo;Плодотворная дебютная идея&raquo; </span> 
+                        Чтобы поддержать<br> Международный васюкинский турнир <span class="description__title-deactivate h3-title">посетите лекцию на&nbsp;тему <span class="h3-title-span"> &laquo;Плодотворная дебютная идея&raquo; </span></span> 
                     </h3>
                     
                     <h3 class="description__title-activate h3-title">
@@ -90,7 +91,7 @@
                     <div class="description__center-block flex list-reset">
                         
                     <h3 class="description__title-bottom h3-title">
-                        и&nbsp;Сеанс <span>одновременной игры в&nbsp;шахматы на&nbsp;160 досках</span> гроссмейстера О.&nbsp;Бендера
+                        и&nbsp;Сеанс <span class="h3-title-span">одновременной игры в&nbsp;шахматы на&nbsp;160 досках</span> гроссмейстера О.&nbsp;Бендера
                     </h3>
                     <ul class="description__lists flex list-reset">
                         <li class="description__stroke flex">
@@ -119,7 +120,7 @@
                         </li>
                         <li class="description__stroke flex">
                               <h4 class="description__h4">
-                                Плата за&nbsp;игру:
+                                Плата за&nbsp;игру: 
                             </h4>  
                                 <p class="description__descr">
                                     50&nbsp;коп.
@@ -305,16 +306,16 @@
                             </button>
                         </div>
                 </div>
-                <div class="swiper__block flex">
-                    <button class="swiper-button-prev swiper__btn" disabled>
+                <div class="swiper__block flex" data-counter>
+                    <button class="swiper-button-prev swiper__btn data-button">
                         <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.5382 18.4615L2.07666 9.99995L10.5382 1.53841" stroke="white" stroke-width="2" stroke-linecap="square"/>
                             </svg>  
                     </button>
                     <p class="swiper__number list-reset">
-                        <span class="swiper__span">1</span> / 6
+                        <span class="swiper__span" type="number" value="1">1</span> / 6
                     </p>
-                    <button class="swiper-button-next swiper__btn" disabled>
+                    <button class="swiper-button-next swiper__btn data-button">
                         <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1.4618 1.53839L9.92334 9.99993L1.4618 18.4615" stroke="white" stroke-width="2" stroke-linecap="square"/>
                             </svg>  
@@ -325,7 +326,7 @@
                 </div>
         </section>
         <div class="running">
-            <div class="running__container running-bottom flex list-reset">
+            <div class="running__container container running-bottom flex list-reset">
                <div class="running__text flex">
                 <p class="running__descr running__text-1 list-reset">
                         Дело помощи утопающим&nbsp;&mdash; дело рук самих утопающих!
@@ -362,7 +363,7 @@
         </div>
     </footer>
 
-    <script defer src="js/slider.js"></script>
+    <script src="js/slider.js"></script>
 
 </body>
 

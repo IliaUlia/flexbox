@@ -211,6 +211,8 @@ button {
 }
 
 .header__link-white {
+    background-color: #FFFFFF;
+    outline: none;
     color: #1F1F1F;
     transition: background-color .3ms ease-in-out, color 0.3ms ease-in-out;
 }
@@ -227,10 +229,11 @@ button {
 }
 
 .running__container {
+    align-items: center;
+    justify-content: center;
     overflow-x: hidden;
     align-items: center;
     min-height: 60px;
-    max-width: 1920px;
   }
 
   .running__text {
@@ -473,6 +476,7 @@ text-transform: uppercase;
 
 .stages__item:nth-child(7) {
     grid-column: span 2;
+    min-width: 100%;
 }
 
 
@@ -501,6 +505,7 @@ text-transform: uppercase;
     font-weight: 500;
     line-height: 24px;
     text-align: left;
+    max-width: 450px;
 }
 
 .stages__img {

@@ -2,8 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let position = 0,
         counter = 1;
 
-    const slideToShow = 3,
-        slideToScroll = 1,
+        let slideToShow = 3;
+    const slideToScroll = 1,
+        counters = document.querySelectorAll('[data-counter]'),
         container = document.querySelector('.participants__swiper'),
         track = document.querySelector('.swiper-wrapper'),
         items = document.querySelectorAll('.swiper__slide'),
@@ -16,15 +17,28 @@ document.addEventListener('DOMContentLoaded', function() {
         itemCount = document.querySelectorAll('.swiper__slide').length,
         swiperCounter = document.querySelector('.swiper__span');
 
+        console.log(itemCount)
+
     items.forEach((item) => {
         item.style.minWidth = `${itemWidth}px`;
         
     })
+
+  window.addEventListener('resize', function(){
+    if (document.documentElement.clientWidth < 1200) {
+
+    }
+  })
+
     // кнопки
     btnPrev.addEventListener('click', () => {
         const itemsLeft = Math.abs(position) / itemWidth;
         position += itemsLeft >= slideToScroll ? movePosition : itemsLeft * itemWidth;
-
+        
+        if (counter >= 1) {
+        --counter
+         swiperCounter.innerHTML = `${counter}`;
+        } 
         setPosition();
         checkBtns();
     });
@@ -32,10 +46,15 @@ document.addEventListener('DOMContentLoaded', function() {
     btnNext.addEventListener('click',() => {
         const itemsLeft = itemCount - (Math.abs(position) + slideToShow *itemWidth) / itemWidth
         position -= itemsLeft >= slideToScroll ? movePosition : itemsLeft * itemWidth;
-        
+        counter++
+        if (counter <= itemCount) {
+
+          swiperCounter.innerHTML = `${counter}`
+        }
         setPosition();
         checkBtns();
     });
+
 
     const setPosition = () => {
         track.style.transform = `translateX(${position}px)`;
@@ -59,8 +78,12 @@ document.addEventListener('DOMContentLoaded', function() {
     checkBtns();
 
 
-    const swiper1 =  document.querySelector ('.stages__swiper'),
-          swiperLine = document.querySelector ('.stages__lists'),
+// слайдер stages
+      
+if((window).innerWidth < 1200) {
+   /* Инициализация слайдера */ 
+
+    const swiperLine = document.querySelector ('.stages__lists'),
           sliderItem = document.querySelectorAll('.stages__item'),
           sliderDots = document.querySelectorAll ('.stages__slider-dot'),
           sliderBtnNext = document.querySelector('.stages-button-next'),
@@ -69,25 +92,23 @@ document.addEventListener('DOMContentLoaded', function() {
       // переменные
       let sliderCount = 0,
           sliderWidth;
-
-  window.addEventListener('resize', showSlide);
-
-  // кнопки
+          
+       // кнопки
     sliderBtnNext.addEventListener('click', nextSlide);
     sliderBtnPrev.addEventListener('click', prevSlide);
 
   function showSlide () {
     sliderWidth = document.querySelector('.stages__item').offsetWidth;
-    swiperLine.style.width = sliderWidth * swiperLine.length + `px`;
+    swiperLine.style.width = sliderWidth / sliderItem.length + `px`;
     sliderItem.forEach(item => item.style.width = sliderWidth + `px`);
-
     rollSlider()
+    thisSlide(sliderCount)
   }
   showSlide ();
   
   function nextSlide() {
     sliderCount ++;
-    if (sliderCount  >= sliderItem.length) sliderCount = 0;
+    if (sliderCount  >= sliderItem.length - 2) sliderCount = 0;
 
     rollSlider();
     thisSlide(sliderCount)
@@ -95,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function prevSlide() {
     sliderCount --;
-    if (sliderCount < 6) sliderCount = sliderItem.length;
+    if (sliderCount == sliderItem.length) sliderCount = sliderItem.length
 
     rollSlider();
     thisSlide(sliderCount)
@@ -110,4 +131,14 @@ document.addEventListener('DOMContentLoaded', function() {
     sliderDots.forEach(item => item.classList.remove('active-dot'));
     sliderDots[index].classList.add('active-dot');
   }
+
+  //клик на dot
+  sliderDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      sliderCount - index;
+      rollSlider();
+      thisSlide(sliderCount);
+    })
+  })
+}
 })

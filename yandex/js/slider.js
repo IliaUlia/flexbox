@@ -2,8 +2,26 @@ document.addEventListener('DOMContentLoaded', function() {
     let position = 0,
         counter = 1;
 
-        let slideToShow = 3;
-    const slideToScroll = 1,
+        let slideToShow;
+
+const pageWidth = (window).innerWidth;
+let slideShowValue = function slideToShowValue(slideToShow) {
+    if (576 > pageWidth <= 1200) {
+      slideToShow = 2
+    } 
+    if (pageWidth > 1200) {
+      slideToShow = 3
+    } 
+    if (pageWidth <= 576) {
+      slideToShow = 1
+    }
+
+  return slideToShow
+}
+
+console.log('slideShowValue', slideShowValue())
+
+  const slideToScroll = 1,
         counters = document.querySelectorAll('[data-counter]'),
         container = document.querySelector('.participants__swiper'),
         track = document.querySelector('.swiper-wrapper'),
@@ -12,23 +30,15 @@ document.addEventListener('DOMContentLoaded', function() {
         btnNext = document.querySelector('.swiper-button-next'),
         btnColor = document.getElementsByClassName('.swiper__btn'),
         btnColorDisabled = document.getElementsByClassName('.swiper__color-disabled'),
-        itemWidth = container.clientWidth / slideToShow,
+        itemWidth = container.clientWidth / slideShowValue(),
         movePosition = slideToScroll * itemWidth,
         itemCount = document.querySelectorAll('.swiper__slide').length,
         swiperCounter = document.querySelector('.swiper__span');
 
-        console.log(itemCount)
-
     items.forEach((item) => {
         item.style.minWidth = `${itemWidth}px`;
-        
     })
 
-  window.addEventListener('resize', function(){
-    if (document.documentElement.clientWidth < 1200) {
-
-    }
-  })
 
     // кнопки
     btnPrev.addEventListener('click', () => {
@@ -44,23 +54,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     btnNext.addEventListener('click',() => {
-        const itemsLeft = itemCount - (Math.abs(position) + slideToShow *itemWidth) / itemWidth
+        const itemsLeft = itemCount - (Math.abs(position) + slideShowValue() *itemWidth) / itemWidth
         position -= itemsLeft >= slideToScroll ? movePosition : itemsLeft * itemWidth;
         counter++
-        if (counter <= itemCount) {
 
+        if (counter <= itemCount) {
           swiperCounter.innerHTML = `${counter}`
         }
         setPosition();
         checkBtns();
     });
 
-
     const setPosition = () => {
         track.style.transform = `translateX(${position}px)`;
     };
 
     const checkBtns = () => {
+      slideShowValue();
+
         btnPrev.disabled = position === 0;
         if (btnPrev.disabled === true) 
             {btnPrev.style.backgroundColor = '#D6D6D6'} 
@@ -68,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btnPrev.style.backgroundColor = '#313131'
         };
 
-        btnNext.disabled = position <= -(itemCount - slideToShow) * itemWidth;
+        btnNext.disabled = position <= -(itemCount - slideShowValue()) * itemWidth;
         if (btnNext.disabled === true) 
             {btnNext.style.backgroundColor = '#D6D6D6'}
         if (btnNext.disabled === false) 
@@ -76,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     checkBtns();
-
 
 // слайдер stages
       
@@ -108,7 +118,7 @@ if((window).innerWidth < 1200) {
   
   function nextSlide() {
     sliderCount ++;
-    if (sliderCount  >= sliderItem.length - 2) sliderCount = 0;
+    if (sliderCount >= sliderItem.length - 2) sliderCount = 0;
 
     rollSlider();
     thisSlide(sliderCount)

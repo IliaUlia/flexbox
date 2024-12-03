@@ -120,6 +120,7 @@ button {
     font-weight: 500;
     line-height: 21px;
     min-width: 260px;
+    height: fit-content;
 }
 
 .flex {
@@ -194,6 +195,7 @@ button {
 
 .header__list {
     justify-content: space-between;
+    align-items: center;
     gap: 16px;
 }
 
@@ -211,6 +213,7 @@ button {
 }
 
 .header__link-white {
+    padding: 26px 40px;
     background-color: #FFFFFF;
     outline: none;
     color: #1F1F1F;
